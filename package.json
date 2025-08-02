@@ -1,20 +1,30 @@
 {
-  "name": "@konjac/analytics",
+  "name": "@konjac-io/analytics",
   "version": "1.0.0",
-  "main": "index.js",
+  "description": "Browser SDK for Konjac pageview & event tracking",
+  "main": "dist/index.cjs.js",
+  "module": "dist/index.esm.js",
+  "types": "dist/index.d.ts",
+  "files": [
+    "dist"
+  ],
   "scripts": {
-    "build": "tsc",
+    "build": "tsc && npm run bundle",
+    "bundle": "esbuild src/index.ts --bundle --platform=browser --format=cjs --outfile=dist/index.cjs.js && esbuild src/index.ts --bundle --platform=browser --format=esm --outfile=dist/index.esm.js",
     "dev": "tsc --watch"
   },
-  "keywords": [],
+  "keywords": ["analytics", "tracking", "konjac", "sdk"],
   "author": "konjac",
   "license": "ISC",
-  "description": "",
+  "dependencies": {
+    "@supabase/supabase-js": "^2.53.0"
+  },
   "devDependencies": {
     "esbuild": "^0.25.8",
     "typescript": "^5.9.2"
   },
-  "dependencies": {
-    "@supabase/supabase-js": "^2.53.0"
+  "packageManager": "yarn@1.22.22+sha512.a6b2f7906b721bba3d67d4aff083df04dad64c399707841b7acf00f6b133b7ac24255f2652fa22ae3534329dc6180534e98d17432037ff6fd140556e2bb3137e",
+  "publishConfig": {
+    "access": "public"
   }
 }
